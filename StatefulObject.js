@@ -38,9 +38,10 @@ define([
                 this._watchChildrenCallbacks(params);
             }
             if(this._objectParent()){
-                params.target = this._refInParent() +':'+params.target;
+                var parentParams = lang.clone(params);
+                parentParams.target = this._refInParent() +':'+params.target;
                 //parentParams[this._refInParent()] = params;
-                this._objectParent().propagate(params);
+                this._objectParent().propagate(parentParams);
             }
         },
         
